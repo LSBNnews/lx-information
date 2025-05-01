@@ -59,13 +59,13 @@ const scene = new Scene()
 const renderer = new WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance"})
 renderer.autoClear = true
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1))
-renderer.setSize( width, height)
+renderer.setSize(width, height)
 renderer.outputEncoding = sRGBEncoding
 container.appendChild(renderer.domElement)
 
 const renderer2 = new WebGLRenderer({ antialias: false})
 renderer2.setPixelRatio(Math.min(window.devicePixelRatio, 1))
-renderer2.setSize( width, height)
+renderer2.setSize(width, height)
 renderer2.outputEncoding = sRGBEncoding
 containerDetails.appendChild(renderer2.domElement)
 
@@ -74,13 +74,13 @@ containerDetails.appendChild(renderer2.domElement)
 const cameraGroup = new Group()
 scene.add(cameraGroup)
 
-const camera = new PerspectiveCamera(35, width / height, 1, 100)
-camera.position.set(19,1.54,-0.1)
+const camera = new PerspectiveCamera(35, containerDetails.clientWidth / containerDetails.clientHeight, 1, 100)
+camera.position.set(-2.7, 3.3, 6) // Vị trí camera ban đầu
 cameraGroup.add(camera)
 
 const camera2 = new PerspectiveCamera(35, containerDetails.clientWidth / containerDetails.clientHeight, 1, 100)
-camera2.position.set(1.9,2.7,2.7)
-camera2.rotation.set(0,1.1,0)
+camera2.position.set(3, 1.5, 2.7)
+camera2.rotation.set(-0.2, 1.1, 0)
 scene.add(camera2)
 
 /////////////////////////////////////////////////////////////////////////
@@ -111,7 +111,7 @@ scene.add(fillLight)
 
 /////////////////////////////////////////////////////////////////////////
 ///// LOADING GLB/GLTF MODEL FROM BLENDER
-loader.load('models/gltf/graces-draco2.glb', function (gltf) {
+loader.load('models/gltf/base.glb', function (gltf) {
 
     gltf.scene.traverse((obj) => {
         if (obj.isMesh) {
@@ -121,6 +121,7 @@ loader.load('models/gltf/graces-draco2.glb', function (gltf) {
             })
         }
     })
+
     scene.add(gltf.scene)
     clearScene()
 })
@@ -133,7 +134,7 @@ function clearScene(){
 /////////////////////////////////////////////////////////////////////////
 //// INTRO CAMERA ANIMATION USING TWEEN
 function introAnimation() {
-    new TWEEN.Tween(camera.position.set(0,4,2.7)).to({ x: 0, y: 2.4, z: 8.8}, 3500).easing(TWEEN.Easing.Quadratic.InOut).start()
+    new TWEEN.Tween(camera.rotation.set(-0.3,0,-1)).to({ x: -0.3, y: -0.4, z: -3.4}, 3000).easing(TWEEN.Easing.Quadratic.InOut).start()
     .onComplete(function () {
         TWEEN.remove(this)
         document.querySelector('.header').classList.add('ended')
@@ -144,28 +145,29 @@ function introAnimation() {
 
 //////////////////////////////////////////////////
 //// CLICK LISTENERS
-document.getElementById('aglaea').addEventListener('click', () => {
-    document.getElementById('aglaea').classList.add('active')
-    document.getElementById('euphre').classList.remove('active')
-    document.getElementById('thalia').classList.remove('active')
-    document.getElementById('content').innerHTML = 'She was venerated as the goddess of beauty, splendor, glory, magnificence, and adornment. She is the youngest of the Charites according to Hesiod. Aglaea is one of three daughters of Zeus and either the Oceanid Eurynome, or of Eunomia, the goddess of good order and lawful conduct.'
-    animateCamera({ x: 1.9, y: 2.7, z: 2.7 },{ y: 1.1 })
+document.getElementById('information').addEventListener('click', () => {
+    document.getElementById('information').classList.add('active')
+    document.getElementById('roleplay').classList.remove('active')
+    document.getElementById('city').classList.remove('active')
+    document.getElementById('content').innerHTML = 'Founder: bradyy, zinne <br> Administrator: Ben <br> Moderator: col, connect play.letsrp.net <br> 3D Developer: Blue Game <br> Staff: No le, DzL, iridescent_love'
+    animateCamera({ x: 3, y: 1.5, z: 2.7 },{x: -0.2, y: 1.1, z: 0})
+
 })
 
-document.getElementById('thalia').addEventListener('click', () => {
-    document.getElementById('thalia').classList.add('active')
-    document.getElementById('aglaea').classList.remove('active')
-    document.getElementById('euphre').classList.remove('active')
-    document.getElementById('content').innerHTML = 'Thalia, in Greek religion, one of the nine Muses, patron of comedy; also, according to the Greek poet Hesiod, a Grace (one of a group of goddesses of fertility). She is the mother of the Corybantes, celebrants of the Great Mother of the Gods, Cybele, the father being Apollo, a god related to music and dance. In her hands she carried the comic mask and the shepherd’s staff.'
-    animateCamera({ x: -0.9, y: 3.1, z: 2.6 },{ y: -0.1 })
+document.getElementById('city').addEventListener('click', () => {
+    document.getElementById('city').classList.add('active')
+    document.getElementById('information').classList.remove('active')
+    document.getElementById('roleplay').classList.remove('active')
+    document.getElementById('content').innerHTML = 'Welcome to Los Santos , a sprawling metropolis filled with opportunity, danger, and endless possibilities. Inspired by Los Angeles, this vibrant city is home to glimmering skyscrapers, gritty backstreets, and everything in between. From high-speed chases to underground crime rings, or simply living the luxurious life of a superstar, Los Santos offers a world where every corner tells a story. Immerse yourself in its rich culture, diverse communities, and the ultimate playground for roleplayers seeking action, drama, and authenticity in every moment.'
+    animateCamera({ x: -2, y: 2, z: 5 },{ y: -0.1 })
 })
 
-document.getElementById('euphre').addEventListener('click', () => {
-    document.getElementById('euphre').classList.add('active')
-    document.getElementById('aglaea').classList.remove('active')
-    document.getElementById('thalia').classList.remove('active')
-    document.getElementById('content').innerHTML = 'Euphrosyne is a Goddess of Good Cheer, Joy and Mirth. Her name is the female version of a Greek word euphrosynos, which means "merriment". The Greek poet Pindar states that these goddesses were created to fill the world with pleasant moments and good will. Usually the Charites attended the goddess of beauty Aphrodite.'
-    animateCamera({ x: -0.4, y: 2.7, z: 1.9 },{ y: -0.6 })
+document.getElementById('roleplay').addEventListener('click', () => {
+    document.getElementById('roleplay').classList.add('active')
+    document.getElementById('information').classList.remove('active')
+    document.getElementById('city').classList.remove('active')
+    document.getElementById('content').innerHTML = 'Roleplay is an immersive style of gameplay where players act as characters in a fictional world, interacting with others through dialogue, actions, and storytelling. It goes beyond regular gaming by emphasizing realism, personality, and consequences. In roleplay servers like FiveM, players create unique personas, build relationships, and engage in dynamic scenarios, making every moment unpredictable and exciting. Roleplay encourages creativity, informationwork, and emotional engagement, turning a video game into a living, breathing experience full of drama, conflict, and unforgettable stories.'
+    animateCamera({ x: -7, y: 2, z: 5 },{ y: -0.7 })
 })
 
 /////////////////////////////////////////////////////////////////////////
@@ -249,26 +251,26 @@ ob.observe(watchedSection)
 
 //////////////////////////////////////////////////
 //// MAGNETIC MENU
-const btn = document.querySelectorAll('nav > .a')
-const customCursor = document.querySelector('.cursor')
+// const btn = document.querySelectorAll('nav > .a')
+// const customCursor = document.querySelector('.cursor')
 
-function update(e) {
-    const span = this.querySelector('span')
+// function update(e) {
+//     const span = this.querySelector('span')
     
-    if(e.type === 'mouseleave') {
-        span.style.cssText = ''
-    } else {
-        const { offsetX: x, offsetY: y } = e,{ offsetWidth: width, offsetHeight: height } = this,
-        walk = 20, xWalk = (x / width) * (walk * 2) - walk, yWalk = (y / height) * (walk * 2) - walk
-        span.style.cssText = `transform: translate(${xWalk}px, ${yWalk}px);`
-    }
-}
+//     if(e.type === 'mouseleave') {
+//         span.style.cssText = ''
+//     } else {
+//         const { offsetX: x, offsetY: y } = e,{ offsetWidth: width, offsetHeight: height } = this,
+//         walk = 20, xWalk = (x / width) * (walk * 2) - walk, yWalk = (y / height) * (walk * 2) - walk
+//         span.style.cssText = `transform: translate(${xWalk}px, ${yWalk}px);`
+//     }
+// }
 
-const handleCursor = (e) => {
-    const x = e.clientX
-    const y =  e.clientY
-    customCursor.style.cssText =`left: ${x}px; top: ${y}px;`
-}
+// const handleCursor = (e) => {
+//     const x = e.clientX
+//     const y =  e.clientY
+//     customCursor.style.cssText =`left: ${x}px; top: ${y}px;`
+// }
 
-btn.forEach(b => b.addEventListener('mousemove', update))
-btn.forEach(b => b.addEventListener('mouseleave', update))
+// btn.forEach(b => b.addEventListener('mousemove', update))
+// btn.forEach(b => b.addEventListener('mouseleave', update))

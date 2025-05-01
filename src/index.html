@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Threejs Graces - By Anderson Mancini</title>
+        <title>Let's Roleplay 2.0</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
         <meta name="description" content="A threejs graces renderer example using threejs boilerplate - by Anderson Mancini">
 
         <meta property="og:url" content="https://threejs-graces.tiiny.site/">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="Threejs Graces - By Anderson Mancini">
+        <meta property="og:title" content="Let's Roleplay 2.0">
         <meta property="og:description" content="A threejs graces renderer example using threejs boilerplate - by Anderson Mancini">
-        <meta property="og:image" content="../static/textures/imageSocial.jpg">
+        <!-- <meta property="og:image" content="../static/textures/imageSocial.jpg"> -->
 
         <meta name="twitter:card" content="summary_large_image">
         <meta property="twitter:domain" content="threejs-graces.tiiny.site/">
@@ -33,32 +33,34 @@
         
         <body>
             <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div id="loading-text-intro"><p>Loading</p></div>
+            <div id="loading-text-intro"><p>Đang tải</p></div>
 
             <div class="main-container" style="visibility:hidden;">
-                <nav class="header"><a class="active a"><span>ART</span></a><a class="a"><span>ABOUT</span></a><a class="a"><span>VISIT</span></a><a class="a"><span>SHOP</span></a><a class="a"><span>SEARCH</span></a><div class="cursor"></div></nav>
+                <nav class="header"><a class="active a"><span>HOME</span></a><a class="a"><span>ABOUT</span></a><a class="a"><span>YOUTUBE</span></a><a class="a"><span>TIKTOK</span></a><a class="a"><span>DISCORD</span></a><div></div></nav>
                 
                 <div class="first">
-                    <h2>The</h2>
-                    <h1>THREE GRACES</h1>
-                    <p>Antonio Canova’s statue The Three Graces is a Neoclassical sculpture, in marble, of the mythological three Charites, daughters of Zeus – identified on some engravings of the statue as, from left to right, Euphrosyne, Aglaea and Thalia – who were said to represent youth/beauty (Thalia), mirth (Euphrosyne), and elegance (Aglaea). The Graces presided over banquets and gatherings, to delight the guests of the gods.</p>
+                    <h2>Welcome to</h2>
+                    <h1>LET'S ROLEPLAY</h1>
+                    <p> 
+                        A paradise for Hardcore Roleplay enthusiasts, where every action has consequences and every decision must be carefully considered. Together, they create a virtual society full of authenticity. Interacting with other players through speech, actions, and even personality — that is the true art of Roleplay
+                    </p>
                 </div>
 
                 <div class="section second">
                     <div class="second-container">
                         <ul>
-                            <li id="aglaea" class="active">Aglaea</li>
-                            <li id="thalia"><a>Thalia</a></li>
-                            <li id="euphre">Euphre</li>
+                            <li id="information" class="active">Information</li>
+                            <li id="city"><a>City</a></li>
+                            <li id="roleplay">Roleplay</li>
                         </ul>
-                        <p id="content">She was venerated as the goddess of beauty, splendor, glory, magnificence, and adornment. She is the youngest of the Charites according to Hesiod. Aglaea is one of three daughters of Zeus and either the Oceanid Eurynome, or of Eunomia, the goddess of good order and lawful conduct.</p>
+                        <p id="content">Founder: bradyy, zinne <br> Administrator: Ben <br> Moderator: col, Nam Truong <br> 3D Developer: Blue Game <br> Staff: Meo, DzL, iridescent_love </p>
                     </div>
                     <div id="canvas-container-details"></div>
                 </div>
 
                 <div class="third">
-                    <h1>The Making</h1>
-                    <p>Canova's assistants roughly blocked out the marble, leaving Canova to perform the final carving and shape the stone to highlight the Graces soft flesh. This was a trademark of the artist, and the piece shows a strong allegiance to the Neo-Classical movement in sculpture, of which Canova is the prime exponent.<br><br> The three goddesses are shown nude, huddled together, their heads almost touching in what many have referred to as an erotically charged piece. They stand, leaning slightly inward — perhaps discussing a common issue, or simply enjoying their closeness. Their hair-styles are similar, braided atop their heads.</p>
+                    <!-- <h1>The Making</h1>
+                    <p>Canova's assistants roughly blocked out the marble, leaving Canova to perform the final carving and shape the stone to highlight the Graces soft flesh. This was a trademark of the artist, and the piece shows a strong allegiance to the Neo-Classical movement in sculpture, of which Canova is the prime exponent.<br><br> The three goddesses are shown nude, huddled together, their heads almost touching in what many have referred to as an erotically charged piece. They stand, leaning slightly inward — perhaps discussing a common issue, or simply enjoying their closeness. Their hair-styles are similar, braided atop their heads.</p> -->
                 </div>
                 <div id="canvas-container" class="fixed"></div> 
                 <h4 class="footer">Created by Anderson Mancini based on <a href="https://dribbble.com/shots/6767548-The-Three-Graces-Concept" target="_blank">Tom Bogner Design</a>. <a href="https://sketchfab.com/3d-models/3d-printable-the-three-graces-58e0ae19e2984b86883edc41bf43415a" target="_blank">Free model credits</a></h4>

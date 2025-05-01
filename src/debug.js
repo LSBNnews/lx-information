@@ -9,8 +9,8 @@
 // 	fillLight.color.set(colorObj4)
 // }
 
-// //////////////////////////////////////////////////
-// //// GUI CONFIG
+// // //////////////////////////////////////////////////
+// // //// GUI CONFIG
 // gui.add(sunLight, 'intensity').min(0).max(10).step(0.0001).name('Dir intensity')
 // gui.add(fillLight, 'intensity').min(0).max(10).step(0.0001).name('Dir intensity')
 // gui.add(camera2.position, 'x').min(-10).max(10).step(0.1).name('Dir X pos')
